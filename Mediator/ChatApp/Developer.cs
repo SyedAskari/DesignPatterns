@@ -1,5 +1,8 @@
 ﻿namespace Mediator.ChatApp
 {
+    /// <summary>
+    /// Concrete Colleague
+    /// </summary>
     public class Developer : TeamMember
     {
         public Developer(string name) : base(name)

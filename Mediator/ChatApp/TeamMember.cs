@@ -1,5 +1,8 @@
 ﻿namespace Mediator.ChatApp
 {
+    /// <summary>
+    /// Colleague
+    /// </summary>
     public abstract class TeamMember
     {
         public TeamMember(string name)
@@ -16,12 +19,12 @@
 
         public void Send(string message)
         {
-            this.chatRoom.Send(this.Name, message);
+            this.chatRoom.SendMessageToAllTeamMembers(this.Name, message);
         }
 
         public void SendTo<T>(string message) where T : TeamMember
         {
-            this.chatRoom.SendTo<T>(this.Name, message);
+            this.chatRoom.SendMessageToSpecificGroup<T>(this.Name, message);
         }
 
         public virtual void Recieve(string from, string message)

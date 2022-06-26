@@ -1,9 +1,12 @@
 ﻿namespace Mediator.ChatApp
 {
+    /// <summary>
+    /// Concrete Mediator
+    /// </summary>
     public class TeamChatRoom : ChatRoom
     {
         private List<TeamMember> teamMembers = new List<TeamMember>();
-        public override void Register(TeamMember teamMember)
+        public override void RegisterTeamMember(TeamMember teamMember)
         {
             teamMember.SetChatroom(this);
             teamMembers.Add(teamMember);
@@ -13,16 +16,16 @@
         {
             foreach (TeamMember teamMember in teamMembers)
             {
-                this.Register(teamMember);
+                this.RegisterTeamMember(teamMember);
             }
         }
 
-        public override void Send(string from, string message)
+        public override void SendMessageToAllTeamMembers(string from, string message)
         {
             teamMembers.ForEach(teamMember => teamMember.Recieve(from, message));
         }
 
-        public override void SendTo<T>(string from, string message)
+        public override void SendMessageToSpecificGroup<T>(string from, string message)
         {
             teamMembers.OfType<T>().ToList().ForEach(teamMember => teamMember.Recieve(from, message));
         }
