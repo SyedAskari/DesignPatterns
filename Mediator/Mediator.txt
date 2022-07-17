@@ -1,0 +1,14 @@
+﻿DEFINITION
+
+The intent of this pattern is to define an object-the mediator-that
+encapsulates how a set of objects interact.It does that by forcing
+objects to communicate via that mediator. Hence it promotes loose
+coupling.
+
+Mediator defines an interface for with Colleague communicating objects.
+
+Colleague knows its Mediator and communicates with it instead
+of with another Colleague.
+
+ConcreteMediator knows and maintains its Colleagues,and it
+implements cooperative behavior by coordinating Colleague objects.
